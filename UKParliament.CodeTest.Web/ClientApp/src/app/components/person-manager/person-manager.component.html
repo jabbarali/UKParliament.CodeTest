@@ -11,5 +11,6 @@
                      (cancel)="onCancel()"
                      (delete)="onDelete($event)">
   </app-person-editor>
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
   <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 </div>
