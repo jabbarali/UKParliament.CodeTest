@@ -1,0 +1,13 @@
+<section aria-labelledby="people-list-heading">
+  <h2 id="people-list-heading">People</h2>
+  <ul>
+    <li *ngFor="let person of people"
+        [class.selected]="person.id === selectedPersonId"
+        (click)="selectPerson.emit(person)"
+        tabindex="0"
+        (keydown.enter)="selectPerson.emit(person)">
+      {{ person.firstName }} {{ person.lastName }} ({{ person.departmentName }})
+    </li>
+  </ul>
+  <button type="button" (click)="addNew.emit()">Add New Person</button>
+</section>

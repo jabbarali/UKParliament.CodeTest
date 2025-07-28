@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  flex: 1 1 auto;
+  height: 100vh;
+  overflow-y: auto;
+  background: #fafbfc;
+  box-sizing: border-box;
+}
+
+section {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+form > div {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+}
+
+button {
+  margin-right: 1rem;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}

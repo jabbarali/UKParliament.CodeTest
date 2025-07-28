@@ -1,0 +1,38 @@
+<section *ngIf="editPerson" aria-labelledby="person-editor-heading">
+  <h2 id="person-editor-heading">{{ editPerson.id ? 'Edit Person' : 'Add Person' }}</h2>
+  <form #personForm="ngForm" (ngSubmit)="onSubmit(personForm)" novalidate>
+    <div>
+      <label for="firstName">First Name</label>
+      <input id="firstName" name="firstName" [(ngModel)]="editPerson.firstName" required maxlength="50" aria-required="true" />
+      <div *ngIf="personForm.submitted && !editPerson.firstName" class="error">First name is required.</div>
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input id="lastName" name="lastName" [(ngModel)]="editPerson.lastName" required maxlength="50" aria-required="true" />
+      <div *ngIf="personForm.submitted && !editPerson.lastName" class="error">Last name is required.</div>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input id="email" name="email" [(ngModel)]="editPerson.email" required email aria-required="true" />
+      <div *ngIf="personForm.submitted && !editPerson.email" class="error">Email is required.</div>
+    </div>
+    <div>
+      <label for="dateOfBirth">Date of Birth</label>
+      <input id="dateOfBirth" name="dateOfBirth" type="date" [(ngModel)]="editPerson.dateOfBirth" required aria-required="true" />
+      <div *ngIf="personForm.submitted && !editPerson.dateOfBirth" class="error">Date of birth is required.</div>
+    </div>
+    <div>
+      <label for="departmentId">Department</label>
+      <select id="departmentId" name="departmentId" [(ngModel)]="editPerson.departmentId" required aria-required="true">
+        <option value="" disabled>Select department</option>
+        <option *ngFor="let dept of departments" [value]="dept.id">{{ dept.name }}</option>
+      </select>
+      <div *ngIf="personForm.submitted && !editPerson.departmentId" class="error">Department is required.</div>
+    </div>
+    <div>
+      <button type="submit" [disabled]="personForm.invalid">Save</button>
+      <button type="button" (click)="cancel.emit()">Cancel</button>
+    </div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  </form>
+</section>

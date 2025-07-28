@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  width: 320px;
+  min-width: 240px;
+  max-width: 400px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+}
+
+ul {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+  border-radius: 4px;
+}
+
+li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  transition: background 0.2s;
+  outline: none;
+
+  &:hover,
+  &:focus,
+  &.selected {
+    background: #e3f2fd;
+  }
+}
+
+button {
+  margin-top: 1rem;
+  align-self: flex-start;
+}

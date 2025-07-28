@@ -1,0 +1,7 @@
+.person-manager {
+  display: flex;
+  height: 100vh; // Full viewport height
+  box-sizing: border-box;
+  gap: 0; // Remove gap if you want the border to touch
+  background: #f8f9fa;
+}

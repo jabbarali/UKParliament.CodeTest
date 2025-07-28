@@ -1,0 +1,13 @@
+<div class="person-manager">
+  <app-person-list [people]="people"
+                   [selectedPersonId]="selectedPerson?.id || null"
+                   (selectPerson)="onSelectPerson($event)"
+                   (addNew)="onAddNew()">
+  </app-person-list>
+  <app-person-editor [person]="selectedPerson"
+                     [departments]="departments"
+                     (save)="onSave($event)"
+                     (cancel)="onCancel()">
+  </app-person-editor>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</div>
