@@ -8,7 +8,8 @@
                      [person]="selectedPerson"
                      [departments]="departments"
                      (save)="onSave($event)"
-                     (cancel)="onCancel()">
+                     (cancel)="onCancel()"
+                     (delete)="onDelete($event)">
   </app-person-editor>
   <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 </div>

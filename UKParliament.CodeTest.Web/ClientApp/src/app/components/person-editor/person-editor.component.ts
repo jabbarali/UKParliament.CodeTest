@@ -13,6 +13,7 @@ export class PersonEditorComponent implements OnChanges {
   @Input() departments: Department[] = [];
   @Output() save = new EventEmitter<Person>();
   @Output() cancel = new EventEmitter<void>();
+  @Output() delete = new EventEmitter<Person>();
 
   editPerson: Person = this.createEmptyPerson();
   errorMessage: string = '';
@@ -40,5 +41,13 @@ export class PersonEditorComponent implements OnChanges {
   onSubmit(form: NgForm) {
     if (form.invalid) return;
     this.save.emit(this.editPerson);
+  }
+
+  onDelete() {
+    if (this.editPerson.id !== 0) {
+      if (confirm('Are you sure you want to delete this person?')) {
+        this.delete.emit(this.editPerson);
+      }
+    }
   }
 }

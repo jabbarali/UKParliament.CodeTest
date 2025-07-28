@@ -70,4 +70,16 @@ export class PersonManagerComponent implements OnInit {
     this.selectedPerson = null;
     this.showEditor = false;
   }
+
+  onDelete(person: Person) {
+  this.personService.delete(person.id).subscribe({
+    next: () => {
+      this.loadPeople();
+      this.selectedPerson = null;
+      this.showEditor = false;
+    },
+    error: err => this.errorMessage = 'Failed to delete person.'
+  });
+}
+
 }

@@ -32,6 +32,12 @@
     <div>
       <button type="submit" [disabled]="personForm.invalid">Save</button>
       <button type="button" (click)="cancel.emit()">Cancel</button>
+      <button *ngIf="editPerson.id !== 0"
+              type="button"
+              (click)="onDelete()"
+              class="delete-btn">
+        Delete
+      </button>
     </div>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
   </form>
