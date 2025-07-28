@@ -4,7 +4,8 @@
                    (selectPerson)="onSelectPerson($event)"
                    (addNew)="onAddNew()">
   </app-person-list>
-  <app-person-editor [person]="selectedPerson"
+  <app-person-editor *ngIf="showEditor"
+                     [person]="selectedPerson"
                      [departments]="departments"
                      (save)="onSave($event)"
                      (cancel)="onCancel()">

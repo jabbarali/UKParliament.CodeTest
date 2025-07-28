@@ -14,6 +14,7 @@ export class PersonManagerComponent implements OnInit {
   departments: Department[] = [];
   selectedPerson: Person | null = null;
   errorMessage: string = '';
+  showEditor = false;
 
   constructor(
     private personService: PersonService,
@@ -34,10 +35,13 @@ export class PersonManagerComponent implements OnInit {
 
   onSelectPerson(person: Person) {
     this.selectedPerson = person;
+    this.showEditor = true;
   }
 
   onAddNew() {
     this.selectedPerson = null;
+    this.showEditor = false;
+    setTimeout(() => this.showEditor = true, 0);
   }
 
   onSave(person: Person) {
@@ -46,6 +50,7 @@ export class PersonManagerComponent implements OnInit {
         next: () => {
           this.loadPeople();
           this.selectedPerson = null;
+          this.showEditor = false;
         },
         error: err => this.errorMessage = 'Failed to create person.'
       });
@@ -54,6 +59,7 @@ export class PersonManagerComponent implements OnInit {
         next: () => {
           this.loadPeople();
           this.selectedPerson = null;
+          this.showEditor = false;
         },
         error: err => this.errorMessage = 'Failed to update person.'
       });
@@ -62,5 +68,6 @@ export class PersonManagerComponent implements OnInit {
 
   onCancel() {
     this.selectedPerson = null;
+    this.showEditor = false;
   }
 }
