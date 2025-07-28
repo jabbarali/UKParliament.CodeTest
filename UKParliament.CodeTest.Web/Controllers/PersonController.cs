@@ -55,12 +55,19 @@ namespace UKParliament.CodeTest.Web.Controllers
         {
             if (id != dto.Id) return BadRequest();
             if (!ModelState.IsValid) return BadRequest(ModelState);
-
+            
+            // Fetch the tracked entity
             var existing = await _service.GetByIdAsync(id);
             if (existing == null) return NotFound();
 
-            var person = PersonMapper.ToEntity(dto);
-            await _service.UpdateAsync(person);
+            // Update properties
+            existing.FirstName = dto.FirstName;
+            existing.LastName = dto.LastName;
+            existing.DateOfBirth = dto.DateOfBirth;
+            existing.DepartmentId = dto.DepartmentId;
+            existing.Email = dto.Email;
+
+            await _service.UpdateAsync(existing);
             var updated = await _service.GetByIdAsync(id);
             return Ok(PersonMapper.ToDto(updated!));
         }
